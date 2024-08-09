@@ -1,4 +1,5 @@
-// pragma solidity 0.5.16;
+// SPDX-License-Identifier: GPL-3.0
+
 pragma solidity >=0.4.22 <0.8.0;
 
 contract Contest {
@@ -82,4 +83,5 @@ contract Contest {
         voters[msg.sender].hasVoted = true;
         voters[msg.sender].vote = _contestantId;
     }
+
 }
