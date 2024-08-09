@@ -17,7 +17,7 @@ contract Contest {
         bool isRegistered;
     }
 
-    address admin;
+    address public admin;
     mapping(uint => Contestant) public contestants;
     // mapping(address => bool) public voters;
     mapping(address => Voter) public voters;

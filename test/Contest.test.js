@@ -26,21 +26,26 @@ const { interface, bytecode } = require("../compile")
 // contract test code will go here
 
 let accounts;
-let inbox;
+let contest;
 
 beforeEach(async () => {
   // Get a list of all accounts
   accounts = await web3.eth.getAccounts();
-  inbox = await new web3.eth.Contract(JSON.parse(interface))
+  contest = await new web3.eth.Contract(JSON.parse(interface))
     .deploy({
       data: bytecode,
-      arguments: ["Hi there!"],
+    //   arguments: ["Hi there!"],
     })
     .send({ from: accounts[0], gas: "1000000" });
 });
 
 describe("Contest", () => {
   it("deploys a contract", () => {
-    console.log(inbox);
+    assert.ok(contest.options.address);
+  });
+
+  it("It has Admin", async() => {
+	const admin = await contest.methods.admin().call();
+	console.log(admin);
   });
 });
